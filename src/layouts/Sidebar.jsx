@@ -59,7 +59,7 @@ function Sidebar({ onNavigate }) {
 
         <div className="min-w-0">
           <p className="truncate text-[20px] font-bold leading-none text-slate-900">
-            LoanFlow
+            LendSwift
           </p>
 
           <p className="mt-2 truncate text-sm text-slate-500">
@@ -130,7 +130,7 @@ function Sidebar({ onNavigate }) {
         </p>
 
         <a
-          href="mailto:hellojavaos@gmail.com"
+          href="mailto:LendSwift@gmail.com"
           className="sidebar-support-button"
         >
           <Headphones size={17} />
