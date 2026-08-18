@@ -1,0 +1,3042 @@
+@import "tailwindcss";
+
+/* ============================================================
+   RESET
+   ============================================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+body {
+  font-family: "Manrope", sans-serif;
+  background: #eef2f8;
+  color: #16243f;
+}
+
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+
+:root {
+  --surface: #eef2f8;
+  --white: #ffffff;
+  --input-surface: #f7f9fd;
+
+  --text-primary: #16243f;
+  --text-secondary: #61718d;
+  --text-muted: #8491a8;
+
+  --purple: #5538ed;
+  --purple-dark: #4930dc;
+  --purple-soft: #f1edff;
+
+  --border: #e1e6ef;
+
+  --neu-light: rgba(255, 255, 255, 0.95);
+  --neu-dark: rgba(143, 155, 178, 0.22);
+}
+
+/* ============================================================
+   MAIN APPLICATION
+   ============================================================ */
+
+.app-shell {
+  width: 100%;
+  height: 100vh;
+  min-height: 0;
+
+  padding: 13px;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(255, 255, 255, 0.9),
+      transparent 38%
+    ),
+    #eef2f8;
+}
+
+.app-outer-container {
+  width: 100%;
+  max-width: 1600px;
+
+  height: calc(100vh - 26px);
+  min-height: 0;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  gap: 17px;
+
+  overflow: hidden;
+
+  padding: 0;
+}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+
+.app-sidebar {
+  width: 288px;
+  min-width: 288px;
+  height: 100%;
+
+  flex-shrink: 0;
+
+  overflow: hidden;
+}
+
+.sidebar-surface {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 24px 22px;
+
+  overflow: hidden;
+
+  border-radius: 28px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.98),
+      rgba(247, 249, 253, 0.94)
+    );
+
+  border: 1px solid rgba(218, 225, 236, 0.9);
+
+  box-shadow:
+    8px 0 24px rgba(15, 23, 42, 0.10),
+    2px 0 6px rgba(15, 23, 42, 0.06);
+}
+
+/* ============================================================
+   SIDEBAR BRAND
+   ============================================================ */
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  padding: 8px 7px 0;
+
+  flex-shrink: 0;
+}
+
+.sidebar-brand-icon {
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 14px;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      145deg,
+      #7056ff,
+      #5030e8
+    );
+
+  box-shadow:
+    0 7px 14px rgba(80, 48, 232, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+/* ============================================================
+   SIDEBAR NAV
+   ============================================================ */
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+
+  margin-top: 42px;
+
+  flex: 1;
+
+  min-height: 0;
+}
+
+.sidebar-nav-item {
+  min-height: 65px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 0 18px;
+
+  border-radius: 16px;
+
+  text-decoration: none;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  color: #40516f;
+
+  border: 1px solid rgba(222, 228, 238, 0.75);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.98),
+      rgba(249, 251, 254, 0.9)
+    );
+
+  box-shadow:
+    5px 6px 13px rgba(117, 130, 155, 0.12),
+    -4px -4px 11px rgba(255, 255, 255, 0.9);
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.sidebar-nav-item:hover {
+  transform: translateY(-1px);
+
+  box-shadow:
+    6px 8px 16px rgba(117, 130, 155, 0.15),
+    -5px -5px 12px rgba(255, 255, 255, 0.92);
+}
+
+.sidebar-nav-active {
+  color: #4a2de2;
+
+  border-color: rgba(126, 100, 255, 0.25);
+
+  background:
+    linear-gradient(
+      145deg,
+      #f9f7ff,
+      #f1edff
+    );
+
+  box-shadow:
+    0 8px 18px rgba(91, 61, 235, 0.12),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.95);
+}
+
+.sidebar-nav-disabled {
+  cursor: default;
+
+  color: #63738d;
+}
+
+.sidebar-nav-icon {
+  width: 24px;
+  height: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   SIDEBAR SUPPORT
+   ============================================================ */
+
+.sidebar-support-card {
+  flex-shrink: 0;
+
+  margin-top: 28px;
+
+  padding: 22px;
+
+  border-radius: 19px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #f7f9fd
+    );
+
+  box-shadow:
+    5px 7px 16px rgba(119, 131, 153, 0.13),
+    -5px -5px 13px rgba(255, 255, 255, 0.94);
+
+  border: 1px solid rgba(228, 233, 242, 0.85);
+}
+
+.sidebar-support-icon {
+  width: 45px;
+  height: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  color: #5538ed;
+
+  background: white;
+
+  box-shadow:
+    3px 4px 8px rgba(117, 130, 155, 0.14),
+    -3px -3px 8px rgba(255, 255, 255, 0.95);
+}
+
+.sidebar-support-button {
+  min-height: 51px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  margin-top: 19px;
+
+  padding: 0 18px;
+
+  border-radius: 12px;
+
+  color: white;
+
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  background:
+    linear-gradient(
+      145deg,
+      #6547f4,
+      #5131e8
+    );
+
+  box-shadow:
+    0 7px 15px rgba(83, 51, 232, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.sidebar-support-button:hover {
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 9px 18px rgba(83, 51, 232, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* ============================================================
+   MAIN APPLICATION AREA
+   ============================================================ */
+
+.app-main {
+  flex: 1;
+
+  min-width: 0;
+  min-height: 0;
+
+  height: 100%;
+
+  overflow: hidden;
+
+  padding: 28px 34px;
+
+  border-radius: 30px;
+
+  background:
+    linear-gradient(
+      140deg,
+      rgba(252, 253, 255, 0.97),
+      rgba(245, 247, 252, 0.93)
+    );
+
+  border: 1px solid rgba(221, 227, 238, 0.95);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+}
+
+/* ============================================================
+   PAGE CONTAINER
+   ============================================================ */
+
+.page-container {
+  width: 100%;
+  height: 100%;
+
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+
+  overflow: hidden;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.wizard-header {
+  flex: 0 0 auto;
+}
+
+.app-header {
+  width: 100%;
+
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 24px;
+}
+
+.app-header-copy {
+  min-width: 0;
+}
+
+.app-title {
+  color: #152440;
+
+  font-size: clamp(
+    2rem,
+    3vw,
+    2.3rem
+  );
+
+  line-height: 1.12;
+
+  font-weight: 800;
+
+  letter-spacing: -0.03em;
+}
+
+.app-subtitle {
+  max-width: 760px;
+
+  margin-top: 14px;
+
+  color: #61718d;
+
+  font-size: 16px;
+
+  line-height: 1.7;
+}
+
+.app-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  flex-shrink: 0;
+}
+
+.save-status {
+  min-height: 54px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 0 22px;
+
+  border-radius: 15px;
+
+  color: #289055;
+
+  background: rgba(255, 255, 255, 0.92);
+
+  border: 1px solid rgba(228, 233, 240, 0.88);
+
+  box-shadow:
+    5px 7px 15px rgba(118, 130, 151, 0.11),
+    -4px -4px 10px rgba(255, 255, 255, 0.92);
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.save-draft-button {
+  min-height: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  padding: 0 23px;
+
+  border: 0;
+  border-radius: 15px;
+
+  cursor: pointer;
+
+  color: #1b2a46;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  box-shadow:
+    5px 7px 15px rgba(118, 130, 151, 0.12),
+    -5px -5px 12px rgba(255, 255, 255, 0.95);
+
+  font-size: 14px;
+  font-weight: 700;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.save-draft-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.save-draft-button:active:not(:disabled) {
+  transform: translateY(0);
+
+  box-shadow:
+    inset 2px 2px 5px rgba(115, 127, 149, 0.18),
+    inset -2px -2px 5px white;
+}
+
+.save-draft-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* ============================================================
+   CARD 1
+   ============================================================ */
+
+.wizard-progress-card {
+  flex: 0 0 auto;
+
+  min-height: 0;
+
+  width: 100%;
+
+  padding: 27px 28px 24px;
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.98),
+      rgba(249, 250, 253, 0.94)
+    );
+
+  border: 1px solid rgba(226, 231, 240, 0.88);
+
+  box-shadow:
+    6px 8px 20px rgba(117, 130, 152, 0.11),
+    -6px -6px 17px rgba(255, 255, 255, 0.94);
+
+  overflow: hidden;
+}
+
+.progress-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 16px;
+}
+
+.progress-label {
+  color: #61718d;
+
+  font-size: 15px;
+
+  font-weight: 600;
+}
+
+.progress-step {
+  margin-top: 4px;
+
+  color: #4f31e8;
+
+  font-size: 22px;
+
+  line-height: 1.2;
+
+  font-weight: 800;
+}
+
+.progress-complete-badge {
+  min-height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 23px;
+
+  border-radius: 999px;
+
+  color: #4f31e8;
+
+  background:
+    linear-gradient(
+      145deg,
+      #faf8ff,
+      #f2efff
+    );
+
+  box-shadow:
+    4px 5px 11px rgba(114, 94, 191, 0.12),
+    -4px -4px 10px rgba(255, 255, 255, 0.95);
+
+  font-size: 14px;
+  font-weight: 800;
+}
+
+/* ============================================================
+   STEP INDICATOR
+   ============================================================ */
+
+.wizard-step-indicator {
+  margin-top: 22px;
+}
+
+.step-indicator-wrapper {
+  width: 100%;
+
+  overflow: hidden;
+}
+
+.step-indicator-row {
+  width: 100%;
+
+  display: flex;
+  align-items: flex-start;
+}
+
+.step-item {
+  min-width: 0;
+
+  display: flex;
+  align-items: flex-start;
+
+  flex: 1;
+}
+
+.step-circle {
+  width: 41px;
+  height: 41px;
+
+  min-width: 41px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  transition:
+    all 0.2s ease;
+}
+
+.step-circle-active {
+  color: white;
+
+  background:
+    linear-gradient(
+      145deg,
+      #6948fa,
+      #4b2be2
+    );
+
+  box-shadow:
+    0 6px 13px rgba(78, 43, 227, 0.25);
+}
+
+.step-circle-upcoming {
+  color: #34445f;
+
+  background: #fbfcff;
+
+  border: 2px solid #d8dee9;
+
+  box-shadow:
+    2px 3px 6px rgba(117, 130, 154, 0.11),
+    -2px -2px 5px rgba(255, 255, 255, 0.95);
+}
+
+.step-circle-complete {
+  color: white;
+
+  background: #5538ed;
+
+  border: 0;
+
+  box-shadow:
+    0 6px 13px rgba(78, 43, 227, 0.2);
+}
+
+.step-title {
+  max-width: 90px;
+
+  margin-top: 11px;
+
+  color: #56667f;
+
+  font-size: 12px;
+
+  line-height: 1.35;
+
+  text-align: center;
+
+  font-weight: 600;
+}
+
+.step-title-active {
+  color: #4f31e8;
+  font-weight: 800;
+}
+
+.step-title-complete {
+  color: #4f31e8;
+}
+
+.step-connector {
+  height: 5px;
+
+  flex: 1;
+
+  min-width: 12px;
+
+  margin:
+    19px 9px 0;
+
+  border-radius: 999px;
+
+  background: #e4e8ef;
+}
+
+.step-connector-complete {
+  background: #5538ed;
+}
+
+/* ============================================================
+   CARD 2
+   ============================================================ */
+
+.wizard-form-card {
+  flex: 1 1 0;
+
+  min-height: 0;
+
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  padding: 24px 26px;
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.98),
+      rgba(249, 250, 253, 0.95)
+    );
+
+  border: 1px solid rgba(226, 231, 240, 0.88);
+
+  box-shadow:
+    6px 8px 20px rgba(117, 130, 152, 0.11),
+    -6px -6px 17px rgba(255, 255, 255, 0.94);
+}
+
+/* ============================================================
+   ONLY SCROLLABLE AREA
+   ============================================================ */
+
+.wizard-form-scroll {
+  flex: 1 1 0;
+
+  min-height: 0;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  padding: 0 8px 4px 0;
+
+  scrollbar-width: thin;
+
+  scrollbar-color:
+    #c2c9d7
+    transparent;
+}
+
+.wizard-form-scroll::-webkit-scrollbar {
+  width: 7px;
+}
+
+.wizard-form-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.wizard-form-scroll::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+
+  background: #c2c9d7;
+}
+
+.wizard-form-scroll::-webkit-scrollbar-thumb:hover {
+  background: #aeb6c6;
+}
+
+/* ============================================================
+   FIXED NAVIGATION
+   ============================================================ */
+
+.wizard-navigation {
+  flex-shrink: 0;
+
+  margin-top: 16px;
+
+  padding-top: 16px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(249, 250, 253, 0),
+      rgba(249, 250, 253, 0.97) 22%
+    );
+
+  border-top: 1px solid #e8ebf1;
+}
+
+/* ============================================================
+   FORM CONTENT
+   ============================================================ */
+
+.step-form-content {
+  display: flex;
+  flex-direction: column;
+
+  gap: 24px;
+
+  padding: 1px 0 6px;
+}
+
+.loan-type-section {
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
+}
+
+.loan-section-title {
+  color: #16243f;
+
+  font-size: 20px;
+
+  line-height: 1.3;
+
+  font-weight: 800;
+}
+
+.loan-section-description {
+  margin-top: 3px;
+
+  color: #60708b;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+/* ============================================================
+   LOAN TYPE CARDS
+   ============================================================ */
+
+.loan-type-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+.loan-type-card {
+  min-height: 150px;
+
+  display: flex;
+  align-items: flex-start;
+
+  gap: 18px;
+
+  position: relative;
+
+  padding: 20px;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  border: 1px solid #e3e7ef;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #fafbfe
+    );
+
+  box-shadow:
+    5px 7px 16px rgba(112, 127, 151, 0.1),
+    -5px -5px 13px rgba(255, 255, 255, 0.95);
+
+  transition:
+    transform 0.16s ease,
+    border-color 0.16s ease,
+    box-shadow 0.16s ease;
+}
+
+.loan-type-card:hover {
+  transform: translateY(-2px);
+
+  border-color: #cfc4ff;
+
+  box-shadow:
+    7px 9px 20px rgba(109, 89, 203, 0.13),
+    -5px -5px 13px rgba(255, 255, 255, 0.96);
+}
+
+.loan-type-card:active {
+  transform: translateY(0);
+
+  box-shadow:
+    inset 2px 2px 5px rgba(106, 119, 142, 0.12),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.85);
+}
+
+.loan-type-card-selected {
+  border: 2px solid #b7a7ff;
+
+  background:
+    linear-gradient(
+      145deg,
+      #faf8ff,
+      #f3efff
+    );
+
+  box-shadow:
+    0 10px 24px rgba(103, 72, 239, 0.16),
+    -4px -4px 12px rgba(255, 255, 255, 0.96);
+}
+
+.loan-type-card-top {
+  flex-shrink: 0;
+
+  width: 56px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 20px;
+}
+
+.loan-type-icon {
+  width: 54px;
+  height: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 15px;
+
+  color: #4d32e7;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #f3efff
+    );
+
+  box-shadow:
+    4px 5px 10px rgba(108, 86, 194, 0.12),
+    -4px -4px 9px rgba(255, 255, 255, 0.96);
+}
+
+.loan-type-radio {
+  width: 31px;
+  height: 31px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  border: 2px solid #d7dde8;
+
+  background: #fafbfe;
+
+  color: white;
+}
+
+.loan-type-radio-selected {
+  border-color: #5538ed;
+
+  background: #5538ed;
+
+  box-shadow:
+    0 5px 12px rgba(83, 54, 231, 0.25);
+}
+
+.loan-type-card-content {
+  min-width: 0;
+
+  flex: 1;
+
+  padding-top: 1px;
+}
+
+.loan-type-badge {
+  width: fit-content;
+
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+
+  margin-bottom: 9px;
+
+  padding: 4px 9px;
+
+  border-radius: 999px;
+
+  color: #9a5a00;
+
+  background: #fff0c8;
+
+  font-size: 12px;
+
+  line-height: 1;
+
+  font-weight: 800;
+}
+
+.loan-type-badge span {
+  color: #e2a500;
+}
+
+.loan-type-title {
+  color: #182641;
+
+  font-size: 17px;
+
+  font-weight: 800;
+
+  line-height: 1.35;
+}
+
+.loan-type-description {
+  max-width: 220px;
+
+  margin-top: 6px;
+
+  color: #62718b;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+}
+
+/* ============================================================
+   INPUTS
+   ============================================================ */
+
+.loan-form-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 24px;
+}
+
+.loan-field {
+  min-width: 0;
+}
+
+.loan-field-label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #172440;
+
+  font-size: 14px;
+
+  line-height: 1.3;
+
+  font-weight: 800;
+}
+
+.loan-input-wrapper {
+  position: relative;
+
+  width: 100%;
+}
+
+.loan-input {
+  width: 100%;
+
+  min-height: 56px;
+
+  display: block;
+
+  padding: 0 18px;
+
+  border: 1px solid #e0e5ee;
+
+  border-radius: 15px;
+
+  outline: none;
+
+  color: #243451;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fbfcff,
+      #f7f9fc
+    );
+
+  box-shadow:
+    inset 2px 2px 5px rgba(119, 132, 153, 0.1),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.94),
+    3px 4px 10px rgba(116, 129, 151, 0.07);
+
+  font-size: 15px;
+
+  transition:
+    border-color 0.16s ease,
+    box-shadow 0.16s ease;
+}
+
+.loan-input::placeholder {
+  color: #8793a8;
+}
+
+.loan-input:focus {
+  border-color: rgba(91, 64, 235, 0.35);
+
+  box-shadow:
+    inset 2px 2px 5px rgba(119, 132, 153, 0.1),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.94),
+    0 0 0 3px rgba(84, 55, 234, 0.09);
+}
+
+.loan-input-with-icon {
+  padding-left: 51px;
+}
+
+.loan-input-icon {
+  position: absolute;
+
+  left: 17px;
+  top: 50%;
+
+  z-index: 2;
+
+  transform: translateY(-50%);
+
+  pointer-events: none;
+
+  color: #8692a8;
+}
+
+.loan-select {
+  appearance: none;
+
+  cursor: pointer;
+
+  padding-right: 47px;
+}
+
+.loan-select-chevron {
+  position: absolute;
+
+  right: 17px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  pointer-events: none;
+
+  color: #78869d;
+}
+
+.loan-input-error {
+  border-color: rgba(220, 38, 38, 0.4);
+}
+
+/* ============================================================
+   EXISTING DESIGN SYSTEM HELPERS
+   ============================================================ */
+
+.skeu-btn {
+  box-shadow:
+    3px 3px 6px var(--neu-dark),
+    -3px -3px 6px var(--neu-light);
+
+  transition:
+    box-shadow 0.15s ease,
+    transform 0.1s ease;
+}
+
+.skeu-btn:hover:not(:disabled) {
+  box-shadow:
+    4px 4px 10px var(--neu-dark),
+    -4px -4px 10px var(--neu-light);
+
+  transform: translateY(-1px);
+}
+
+.skeu-btn:active:not(:disabled) {
+  box-shadow:
+    inset 2px 2px 5px rgba(0, 0, 0, 0.18),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.4);
+
+  transform: translateY(0);
+}
+
+.skeu-btn:disabled {
+  box-shadow:
+    1px 1px 3px var(--neu-dark),
+    -1px -1px 3px var(--neu-light);
+
+  opacity: 0.55;
+}
+
+.skeu-btn-filled {
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.15),
+    0 1px 2px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+
+  transition:
+    box-shadow 0.15s ease,
+    transform 0.1s ease;
+}
+
+.skeu-btn-filled:hover:not(:disabled) {
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.18),
+    0 2px 4px rgba(0, 0, 0, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+
+  transform: translateY(-1px);
+}
+
+.skeu-btn-filled:active:not(:disabled) {
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.25),
+    inset 0 1px 2px rgba(0, 0, 0, 0.2);
+
+  transform: translateY(0);
+}
+
+.skeu-control {
+  box-shadow:
+    2px 2px 4px var(--neu-dark),
+    -2px -2px 4px var(--neu-light);
+
+  transition:
+    box-shadow 0.12s ease,
+    transform 0.1s ease;
+}
+
+.skeu-control:hover:not(:disabled) {
+  box-shadow:
+    3px 3px 6px var(--neu-dark),
+    -3px -3px 6px var(--neu-light);
+}
+
+.skeu-control:active:not(:disabled) {
+  box-shadow:
+    inset 1.5px 1.5px 3px rgba(0, 0, 0, 0.18),
+    inset -1.5px -1.5px 3px rgba(255, 255, 255, 0.4);
+}
+
+.neu-surface {
+  box-shadow:
+    6px 6px 14px var(--neu-dark),
+    -6px -6px 14px var(--neu-light);
+}
+
+.neu-inset {
+  background: var(--input-surface);
+
+  box-shadow:
+    inset 2px 2px 5px var(--neu-dark),
+    inset -2px -2px 5px var(--neu-light);
+}
+
+.neu-inset-shadow {
+  box-shadow:
+    inset 2px 2px 5px rgba(0, 0, 0, 0.08),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.5);
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.72);
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  border: 1px solid rgba(255, 255, 255, 0.5);
+
+  box-shadow:
+    0 8px 32px rgba(15, 23, 42, 0.12),
+    0 2px 8px rgba(15, 23, 42, 0.06);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 1280px) {
+  .app-main {
+    padding: 24px;
+  }
+
+  .app-title {
+    font-size: 2rem;
+  }
+
+  .sidebar-surface {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .app-sidebar {
+    width: 260px;
+    min-width: 260px;
+  }
+
+  .loan-type-card {
+    padding: 17px;
+  }
+
+  .loan-type-description {
+    max-width: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  html,
+  body,
+  #root {
+    overflow: auto;
+  }
+
+  .app-shell {
+    min-height: 100vh;
+    height: auto;
+
+    padding: 10px;
+  }
+
+  .app-outer-container {
+    height: auto;
+    min-height: calc(100vh - 20px);
+
+    overflow: visible;
+  }
+
+  .app-main {
+    height: auto;
+    min-height: calc(100vh - 20px);
+
+    overflow: visible;
+
+    padding: 20px;
+
+    border-radius: 24px;
+  }
+
+  .page-container {
+    height: auto;
+    min-height: 0;
+
+    overflow: visible;
+  }
+
+  .wizard-form-card {
+    min-height: 650px;
+  }
+
+  .loan-type-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .loan-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .app-header {
+    flex-direction: column;
+  }
+
+  .app-header-actions {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-main {
+    padding: 15px;
+  }
+
+  .app-header-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .save-status,
+  .save-draft-button {
+    width: 100%;
+  }
+
+  .wizard-progress-card,
+  .wizard-form-card {
+    padding: 18px;
+    border-radius: 20px;
+  }
+
+  .step-connector {
+    margin-top: 18px;
+  }
+
+  .loan-type-card {
+    min-height: 130px;
+  }
+}
+
+
+/* ============================================================
+   FINAL LOAN APPLICATION SIZE/POSITION REFINEMENT
+   Optimized for desktop viewport ~1366–1920px / 768–1080px
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   GLOBAL FIXED VIEWPORT
+   ------------------------------------------------------------ */
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+body {
+  overflow: hidden;
+}
+
+/* ------------------------------------------------------------
+   MAIN OUTER CONTAINER
+   ------------------------------------------------------------ */
+
+.app-shell {
+  width: 100%;
+  height: 100vh;
+  min-height: 0;
+
+  padding: 12px;
+
+  overflow: hidden;
+}
+
+.app-outer-container {
+  width: 100%;
+  max-width: 1580px;
+
+  height: calc(100vh - 24px);
+  min-height: 0;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  gap: 16px;
+
+  overflow: hidden;
+}
+
+/* ------------------------------------------------------------
+   SIDEBAR
+   ------------------------------------------------------------ */
+
+.app-sidebar {
+  width: 286px;
+  min-width: 286px;
+
+  height: 100%;
+  min-height: 0;
+
+  flex-shrink: 0;
+
+  overflow: hidden;
+}
+
+.sidebar-surface {
+  height: 100%;
+  min-height: 0;
+
+  padding: 22px 20px;
+
+  overflow: hidden;
+
+  border-radius: 28px;
+}
+
+/* Brand */
+
+.sidebar-brand {
+  gap: 13px;
+  padding: 6px 7px 0;
+}
+
+.sidebar-brand-icon {
+  width: 53px;
+  height: 53px;
+
+  border-radius: 15px;
+}
+
+.sidebar-brand p:first-child {
+  font-size: 20px !important;
+  line-height: 1.1;
+}
+
+.sidebar-brand p:last-child {
+  margin-top: 3px !important;
+
+  font-size: 13px !important;
+}
+
+/* Navigation */
+
+.sidebar-nav {
+  gap: 7px;
+
+  margin-top: 35px;
+
+  min-height: 0;
+}
+
+.sidebar-nav-item {
+  min-height: 52px;
+
+  padding: 0 16px;
+
+  border-radius: 15px;
+
+  font-size: 14px;
+}
+
+.sidebar-nav-icon {
+  width: 23px;
+  height: 23px;
+}
+
+/* Support card */
+
+.sidebar-support-card {
+  margin-top: 18px;
+
+  padding: 17px;
+
+  border-radius: 18px;
+}
+
+.sidebar-support-icon {
+  width: 42px;
+  height: 42px;
+}
+
+.sidebar-support-card p {
+  font-size: 13px;
+}
+
+.sidebar-support-card p.mt-4 {
+  margin-top: 11px !important;
+
+  font-size: 16px !important;
+}
+
+.sidebar-support-card p.mt-1\.5 {
+  margin-top: 3px !important;
+
+  line-height: 1.5 !important;
+}
+
+.sidebar-support-button {
+  min-height: 45px;
+
+  margin-top: 12px;
+
+  padding: 0 15px;
+
+  font-size: 13px;
+}
+
+/* ------------------------------------------------------------
+   MAIN CONTENT AREA
+   ------------------------------------------------------------ */
+
+.app-main {
+  flex: 1;
+
+  width: auto;
+  height: 100%;
+
+  min-width: 0;
+  min-height: 0;
+
+  overflow: hidden;
+
+  padding: 24px 32px;
+
+  border-radius: 30px;
+}
+
+/* ------------------------------------------------------------
+   PAGE CONTAINER
+   ------------------------------------------------------------ */
+
+.page-container {
+  width: 100%;
+  height: 100%;
+
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 14px;
+
+  overflow: hidden;
+}
+
+/* ------------------------------------------------------------
+   HEADER
+   ------------------------------------------------------------ */
+
+.wizard-header {
+  flex: 0 0 auto;
+
+  min-height: 0;
+}
+
+.app-header {
+  min-height: 92px;
+
+  align-items: flex-start;
+
+  gap: 18px;
+}
+
+.app-title {
+  font-size: 40px;
+
+  line-height: 1.05;
+
+  letter-spacing: -0.025em;
+}
+
+.app-subtitle {
+  max-width: 770px;
+
+  margin-top: 10px;
+
+  font-size: 14px;
+
+  line-height: 1.55;
+}
+
+.app-header-actions {
+  gap: 12px;
+}
+
+.save-status,
+.save-draft-button {
+  min-height: 48px;
+
+  padding-left: 19px;
+  padding-right: 19px;
+
+  border-radius: 14px;
+
+  font-size: 13px;
+}
+
+/* ------------------------------------------------------------
+   CARD 1 — APPLICATION PROGRESS
+   ------------------------------------------------------------ */
+
+.wizard-progress-card {
+  flex: 0 0 auto;
+
+  height: 156px;
+
+  min-height: 156px;
+
+  padding: 18px 24px;
+
+  border-radius: 23px;
+}
+
+/* Progress heading */
+
+.progress-header {
+  align-items: center;
+}
+
+.progress-label {
+  font-size: 14px;
+}
+
+.progress-step {
+  margin-top: 2px;
+
+  font-size: 20px;
+}
+
+.progress-complete-badge {
+  min-height: 40px;
+
+  padding: 0 20px;
+
+  font-size: 13px;
+}
+
+/* Step indicator */
+
+.wizard-step-indicator {
+  margin-top: 15px;
+}
+
+.step-indicator-row {
+  align-items: flex-start;
+}
+
+.step-circle {
+  width: 39px;
+  height: 39px;
+
+  min-width: 39px;
+
+  font-size: 14px;
+}
+
+.step-title {
+  max-width: 78px;
+
+  margin-top: 8px;
+
+  font-size: 11px;
+
+  line-height: 1.25;
+}
+
+.step-connector {
+  height: 4px;
+
+  min-width: 10px;
+
+  margin-top: 18px;
+
+  margin-left: 7px;
+  margin-right: 7px;
+}
+
+/* ------------------------------------------------------------
+   CARD 2 — FORM
+   ------------------------------------------------------------ */
+
+.wizard-form-card {
+  flex: 1 1 0;
+
+  min-height: 0;
+
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  padding: 20px 24px 18px;
+
+  border-radius: 23px;
+}
+
+/* ------------------------------------------------------------
+   FORM SCROLL AREA
+   ------------------------------------------------------------ */
+
+.wizard-form-scroll {
+  flex: 1 1 0;
+
+  min-height: 0;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  padding-right: 7px;
+}
+
+/* ------------------------------------------------------------
+   STEP CONTENT
+   ------------------------------------------------------------ */
+
+.step-form-content {
+  gap: 15px;
+
+  padding: 0 0 4px;
+}
+
+/* ------------------------------------------------------------
+   LOAN TYPE HEADING
+   ------------------------------------------------------------ */
+
+.loan-type-section {
+  gap: 11px;
+}
+
+.loan-section-title {
+  font-size: 20px;
+
+  line-height: 1.25;
+}
+
+.loan-section-description {
+  margin-top: 2px;
+
+  font-size: 13px;
+
+  line-height: 1.45;
+}
+
+/* ------------------------------------------------------------
+   LOAN TYPE CARDS
+   ------------------------------------------------------------ */
+
+.loan-type-grid {
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 17px;
+}
+
+.loan-type-card {
+  min-height: 118px;
+
+  height: 118px;
+
+  gap: 13px;
+
+  padding: 15px;
+
+  border-radius: 17px;
+}
+
+.loan-type-card-top {
+  width: 49px;
+
+  gap: 13px;
+}
+
+.loan-type-icon {
+  width: 48px;
+  height: 48px;
+
+  border-radius: 13px;
+}
+
+.loan-type-card-content {
+  padding-top: 0;
+}
+
+.loan-type-badge {
+  margin-bottom: 6px;
+
+  padding: 3px 8px;
+
+  font-size: 10px;
+}
+
+.loan-type-title {
+  font-size: 16px;
+
+  line-height: 1.25;
+}
+
+.loan-type-description {
+  max-width: 220px;
+
+  margin-top: 4px;
+
+  font-size: 12px;
+
+  line-height: 1.45;
+}
+
+.loan-type-radio {
+  width: 28px;
+  height: 28px;
+}
+
+/* ------------------------------------------------------------
+   FORM FIELDS
+   ------------------------------------------------------------ */
+
+.loan-form-grid {
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+.loan-field-label {
+  margin-bottom: 6px;
+
+  font-size: 13px;
+}
+
+.loan-input {
+  min-height: 48px;
+  height: 48px;
+
+  padding-left: 16px;
+  padding-right: 16px;
+
+  border-radius: 13px;
+
+  font-size: 13px;
+}
+
+.loan-input-with-icon {
+  padding-left: 46px;
+}
+
+.loan-input-icon {
+  left: 15px;
+}
+
+.loan-select {
+  padding-right: 42px;
+}
+
+.loan-select-chevron {
+  right: 15px;
+}
+
+/* ------------------------------------------------------------
+   NAVIGATION
+   ------------------------------------------------------------ */
+
+.wizard-navigation {
+  flex: 0 0 auto;
+
+  margin-top: 10px;
+
+  padding-top: 11px;
+}
+
+.wizard-navigation > div {
+  min-height: 48px;
+}
+
+.wizard-navigation button {
+  min-height: 46px !important;
+  height: 46px;
+
+  border-radius: 13px;
+
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+
+  font-size: 13px !important;
+}
+
+/* ------------------------------------------------------------
+   DESKTOP HEIGHT OPTIMIZATION
+   ------------------------------------------------------------ */
+
+@media (min-width: 1024px) and (max-height: 900px) {
+
+  .app-main {
+    padding-top: 21px;
+    padding-bottom: 21px;
+  }
+
+  .app-header {
+    min-height: 86px;
+  }
+
+  .app-title {
+    font-size: 38px;
+  }
+
+  .app-subtitle {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .wizard-progress-card {
+    height: 148px;
+    min-height: 148px;
+
+    padding-top: 16px;
+    padding-bottom: 15px;
+  }
+
+  .wizard-step-indicator {
+    margin-top: 12px;
+  }
+
+  .step-circle {
+    width: 37px;
+    height: 37px;
+    min-width: 37px;
+  }
+
+  .step-connector {
+    margin-top: 17px;
+  }
+
+  .wizard-form-card {
+    padding-top: 18px;
+    padding-bottom: 16px;
+  }
+
+  .loan-type-card {
+    min-height: 110px;
+    height: 110px;
+  }
+
+  .loan-type-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .loan-type-card-top {
+    width: 45px;
+  }
+
+  .loan-type-radio {
+    width: 26px;
+    height: 26px;
+  }
+
+  .loan-type-title {
+    font-size: 15px;
+  }
+
+  .loan-type-description {
+    font-size: 11.5px;
+  }
+
+  .loan-input {
+    height: 46px;
+    min-height: 46px;
+  }
+
+  .wizard-navigation {
+    margin-top: 8px;
+    padding-top: 9px;
+  }
+
+  .wizard-navigation button {
+    height: 44px;
+    min-height: 44px !important;
+  }
+}
+
+/* ------------------------------------------------------------
+   VERY SHORT DESKTOP SCREENS
+   Example: 1366x768 / 1920x800
+   ------------------------------------------------------------ */
+
+@media (min-width: 1024px) and (max-height: 820px) {
+
+  .app-shell {
+    padding: 9px;
+  }
+
+  .app-outer-container {
+    height: calc(100vh - 18px);
+  }
+
+  .app-main {
+    padding: 18px 24px;
+  }
+
+  .sidebar-surface {
+    padding-top: 17px;
+    padding-bottom: 17px;
+  }
+
+  .sidebar-nav {
+    margin-top: 25px;
+    gap: 5px;
+  }
+
+  .sidebar-nav-item {
+    min-height: 47px;
+
+    font-size: 13px;
+  }
+
+  .sidebar-support-card {
+    margin-top: 11px;
+    padding: 14px;
+  }
+
+  .sidebar-support-button {
+    min-height: 41px;
+  }
+
+  .app-header {
+    min-height: 78px;
+  }
+
+  .app-title {
+    font-size: 35px;
+  }
+
+  .app-subtitle {
+    margin-top: 7px;
+    font-size: 12px;
+  }
+
+  .save-status,
+  .save-draft-button {
+    min-height: 44px;
+  }
+
+  .wizard-progress-card {
+    height: 134px;
+    min-height: 134px;
+
+    padding: 14px 20px;
+  }
+
+  .progress-label {
+    font-size: 12px;
+  }
+
+  .progress-step {
+    font-size: 18px;
+  }
+
+  .progress-complete-badge {
+    min-height: 35px;
+    font-size: 12px;
+  }
+
+  .wizard-step-indicator {
+    margin-top: 8px;
+  }
+
+  .step-circle {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+
+    font-size: 12px;
+  }
+
+  .step-title {
+    margin-top: 5px;
+    font-size: 10px;
+  }
+
+  .step-connector {
+    margin-top: 16px;
+  }
+
+  .wizard-form-card {
+    padding: 15px 20px 13px;
+  }
+
+  .loan-section-title {
+    font-size: 18px;
+  }
+
+  .loan-section-description {
+    font-size: 12px;
+  }
+
+  .loan-type-grid {
+    gap: 12px;
+  }
+
+  .loan-type-card {
+    height: 98px;
+    min-height: 98px;
+
+    padding: 12px;
+  }
+
+  .loan-type-icon {
+    width: 39px;
+    height: 39px;
+  }
+
+  .loan-type-card-top {
+    width: 40px;
+    gap: 9px;
+  }
+
+  .loan-type-radio {
+    width: 23px;
+    height: 23px;
+  }
+
+  .loan-type-badge {
+    margin-bottom: 4px;
+    font-size: 9px;
+  }
+
+  .loan-type-title {
+    font-size: 14px;
+  }
+
+  .loan-type-description {
+    font-size: 10.5px;
+    line-height: 1.35;
+  }
+
+  .loan-field-label {
+    margin-bottom: 4px;
+    font-size: 12px;
+  }
+
+  .loan-input {
+    height: 42px;
+    min-height: 42px;
+    border-radius: 11px;
+
+    font-size: 12px;
+  }
+
+  .wizard-navigation button {
+    height: 41px;
+    min-height: 41px !important;
+    font-size: 12px !important;
+  }
+}
+
+/* ------------------------------------------------------------
+   RESPONSIVE TABLET / MOBILE
+   ------------------------------------------------------------ */
+
+@media (max-width: 1023px) {
+
+  html,
+  body,
+  #root {
+    overflow: auto;
+  }
+
+  .app-shell {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .app-outer-container {
+    height: auto;
+    min-height: calc(100vh - 18px);
+
+    overflow: visible;
+  }
+
+  .app-main {
+    height: auto;
+    min-height: calc(100vh - 18px);
+
+    overflow: visible;
+  }
+
+  .page-container {
+    height: auto;
+    overflow: visible;
+  }
+
+  .wizard-form-card {
+    min-height: 600px;
+  }
+}
+
+/* ============================================================
+   INPUT ICON / TEXT SPACING FIX
+   ============================================================ */
+
+input {
+  position: relative;
+}
+
+input[class*="pl-"] {
+  padding-left: 48px !important;
+}
+
+/* ============================================================
+   FINAL STEP INDICATOR
+   STEP NUMBER ON TOP
+   STEP NAME BELOW
+   CONNECTOR BETWEEN STEP NUMBERS
+   ============================================================ */
+
+.wizard-step-indicator {
+  width: 100%;
+  margin-top: 15px;
+  padding: 0 2px;
+}
+
+.step-indicator-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.step-indicator-row {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  overflow: visible;
+}
+
+.step-item {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* ============================================================
+   STEP NUMBER
+   ============================================================ */
+
+.step-circle {
+  position: relative;
+  z-index: 3;
+
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 700;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.step-circle-active {
+  color: #ffffff;
+  background: linear-gradient(145deg, #6948fa, #4b2be2);
+  border: none;
+  box-shadow: 0 6px 14px rgba(78, 43, 227, 0.25);
+}
+
+.step-circle-upcoming {
+  color: #34445f;
+  background: #fbfcff;
+  border: 2px solid #d8dee9;
+  box-shadow:
+    2px 3px 6px rgba(117, 130, 154, 0.11),
+    -2px -2px 5px rgba(255, 255, 255, 0.95);
+}
+
+.step-circle-complete {
+  color: #ffffff;
+  background: #5538ed;
+  border: none;
+  box-shadow: 0 6px 13px rgba(78, 43, 227, 0.20);
+}
+
+/* ============================================================
+   STEP NAME
+   IMPORTANT: NAME IS BELOW THE NUMBER
+   ============================================================ */
+
+.step-title {
+  width: 100%;
+  max-width: 125px;
+  margin-top: 8px;
+  padding: 0 4px;
+
+  color: #56667f;
+
+  font-size: 11px;
+  line-height: 1.25;
+  font-weight: 600;
+
+  text-align: center;
+  white-space: normal;
+  word-break: normal;
+}
+
+.step-title-active {
+  color: #4f31e8;
+  font-weight: 800;
+}
+
+.step-title-complete {
+  color: #4f31e8;
+  font-weight: 700;
+}
+
+/* ============================================================
+   CONNECTOR
+   CONNECTS THE CIRCLES HORIZONTALLY
+   ============================================================ */
+
+.step-connector {
+  position: absolute;
+  z-index: 1;
+
+  top: 18px;
+  left: calc(50% + 20px);
+
+  width: calc(100% - 40px);
+  height: 4px;
+
+  margin: 0;
+  border-radius: 999px;
+
+  background: #e3e7ee;
+}
+
+.step-connector-complete {
+  background: #5538ed;
+}
+
+/* ============================================================
+   DESKTOP
+   ============================================================ */
+
+@media (min-width: 1024px) {
+  .wizard-step-indicator {
+    margin-top: 14px;
+  }
+
+  .step-circle {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    font-size: 14px;
+  }
+
+  .step-title {
+    max-width: 125px;
+    margin-top: 8px;
+    font-size: 11px;
+    line-height: 1.25;
+  }
+
+  .step-connector {
+    top: 18px;
+    left: calc(50% + 20px);
+    width: calc(100% - 40px);
+    height: 4px;
+  }
+}
+
+/* ============================================================
+   SHORT DESKTOP SCREENS
+   ============================================================ */
+
+@media (min-width: 1024px) and (max-height: 820px) {
+  .wizard-step-indicator {
+    margin-top: 7px;
+  }
+
+  .step-circle {
+    width: 35px;
+    height: 35px;
+    min-width: 35px;
+    min-height: 35px;
+    font-size: 12px;
+  }
+
+  .step-title {
+    max-width: 115px;
+    margin-top: 5px;
+    font-size: 10px;
+    line-height: 1.2;
+  }
+
+  .step-connector {
+    top: 15px;
+    left: calc(50% + 17px);
+    width: calc(100% - 34px);
+    height: 4px;
+  }
+}
+
+
+
+/* ============================================================
+   PREMIUM FINTECH UI REFINEMENT
+   Visual-only layer: preserves existing layout, behavior and
+   form functionality while improving depth, typography and
+   responsive presentation.
+   ============================================================ */
+
+:root {
+  --surface-shadow: 0 18px 38px rgba(40, 52, 78, 0.12),
+    0 5px 14px rgba(40, 52, 78, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.96);
+  --surface-shadow-hover: 0 22px 44px rgba(40, 52, 78, 0.15),
+    0 7px 18px rgba(40, 52, 78, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.98);
+  --card-border: rgba(211, 219, 232, 0.92);
+}
+
+html {
+  font-family: "Manrope", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: "Manrope", sans-serif;
+}
+
+/* Main shell depth */
+.app-shell {
+  background:
+    radial-gradient(circle at 8% 4%, rgba(255, 255, 255, 0.98), transparent 34%),
+    radial-gradient(circle at 92% 96%, rgba(226, 220, 255, 0.34), transparent 30%),
+    #eef2f8;
+}
+
+.app-outer-container {
+  filter: drop-shadow(0 8px 18px rgba(36, 48, 72, 0.04));
+}
+
+.sidebar-surface,
+.app-main {
+  border-color: var(--card-border);
+  box-shadow: var(--surface-shadow);
+}
+
+.sidebar-surface {
+  position: relative;
+  box-shadow:
+    18px 20px 42px rgba(40, 52, 78, 0.13),
+    5px 8px 18px rgba(40, 52, 78, 0.08),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.98);
+}
+
+.app-main {
+  position: relative;
+  box-shadow:
+    16px 20px 44px rgba(40, 52, 78, 0.12),
+    5px 8px 18px rgba(40, 52, 78, 0.07),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.98);
+}
+
+/* Primary content cards */
+.wizard-progress-card,
+.wizard-form-card,
+.neu-surface {
+  border-color: var(--card-border);
+  box-shadow: var(--surface-shadow);
+}
+
+.wizard-progress-card:hover,
+.wizard-form-card:hover {
+  box-shadow: var(--surface-shadow-hover);
+}
+
+/* Consistent typography hierarchy */
+.app-title,
+.loan-section-title,
+.progress-step,
+.loan-type-title {
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+.app-subtitle,
+.loan-section-description,
+.loan-type-description,
+.progress-label,
+.step-title,
+.loan-field-label,
+.sidebar-nav-item,
+.sidebar-support-card,
+.save-status,
+.save-draft-button {
+  font-family: "Manrope", sans-serif;
+}
+
+.loan-field-label {
+  font-weight: 700;
+  letter-spacing: -0.005em;
+}
+
+/* Selected dropdown values are intentionally heavier than labels. */
+.loan-select {
+  font-weight: 500;
+}
+
+.loan-select:has(option:checked:not([value=""])) {
+  font-weight: 700;
+  color: #1d2b46;
+}
+
+.loan-select option {
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  color: #243451;
+  background: #ffffff;
+}
+
+.loan-select option:checked {
+  font-weight: 700;
+}
+
+/* Input depth: tactile but restrained */
+.loan-input {
+  border-color: rgba(211, 219, 232, 0.95);
+  box-shadow:
+    inset 2px 2px 5px rgba(119, 132, 153, 0.09),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.96),
+    0 3px 8px rgba(70, 84, 111, 0.06);
+}
+
+.loan-input:hover:not(:focus) {
+  border-color: rgba(195, 204, 220, 0.98);
+  box-shadow:
+    inset 2px 2px 5px rgba(119, 132, 153, 0.08),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.96),
+    0 5px 12px rgba(70, 84, 111, 0.08);
+}
+
+/* Cards get a stronger 3D lift while keeping the same shapes. */
+.loan-type-card,
+.sidebar-nav-item,
+.sidebar-support-card,
+.save-status,
+.save-draft-button {
+  border-color: rgba(211, 219, 232, 0.92);
+}
+
+.loan-type-card {
+  box-shadow:
+    9px 11px 24px rgba(84, 98, 124, 0.12),
+    2px 3px 7px rgba(84, 98, 124, 0.05),
+    -6px -6px 15px rgba(255, 255, 255, 0.96);
+}
+
+.loan-type-card:hover {
+  box-shadow:
+    12px 15px 29px rgba(84, 98, 124, 0.15),
+    2px 4px 8px rgba(84, 98, 124, 0.06),
+    -7px -7px 16px rgba(255, 255, 255, 0.98);
+}
+
+.sidebar-nav-item {
+  box-shadow:
+    8px 10px 20px rgba(84, 98, 124, 0.10),
+    -5px -5px 13px rgba(255, 255, 255, 0.96);
+}
+
+.sidebar-nav-item:hover {
+  box-shadow:
+    11px 13px 25px rgba(84, 98, 124, 0.14),
+    -6px -6px 14px rgba(255, 255, 255, 0.98);
+}
+
+.sidebar-support-card {
+  box-shadow:
+    10px 13px 25px rgba(84, 98, 124, 0.12),
+    -6px -6px 14px rgba(255, 255, 255, 0.96);
+}
+
+/* Keep focus visible and accessible without altering interaction. */
+.sidebar-nav-item:focus-visible,
+button:focus-visible,
+a:focus-visible,
+select:focus-visible,
+input:focus-visible {
+  outline: 3px solid rgba(83, 56, 237, 0.20);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   RESPONSIVE REFINEMENT
+   ============================================================ */
+
+@media (max-width: 1100px) and (min-width: 1024px) {
+  .app-shell {
+    padding: 10px;
+  }
+
+  .app-outer-container {
+    gap: 12px;
+  }
+
+  .app-sidebar {
+    width: 246px;
+    min-width: 246px;
+  }
+
+  .sidebar-surface {
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 24px;
+  }
+
+  .sidebar-nav-item {
+    padding: 0 13px;
+    font-size: 13px;
+  }
+
+  .app-main {
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 26px;
+  }
+
+  .app-title {
+    font-size: clamp(30px, 3.5vw, 36px);
+  }
+
+  .loan-type-grid {
+    gap: 12px;
+  }
+
+  .loan-type-card {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .app-shell {
+    padding: 10px;
+  }
+
+  .app-outer-container {
+    width: 100%;
+    min-height: calc(100vh - 20px);
+  }
+
+  .app-main {
+    width: 100%;
+    min-height: calc(100vh - 20px);
+    padding: 20px;
+    border-radius: 24px;
+  }
+
+  .page-container {
+    width: 100%;
+  }
+
+  .wizard-progress-card,
+  .wizard-form-card {
+    width: 100%;
+  }
+
+  .app-header {
+    gap: 14px;
+  }
+
+  .app-title {
+    font-size: clamp(30px, 5vw, 40px);
+  }
+
+  .wizard-form-scroll {
+    padding-right: 4px;
+  }
+}
+
+@media (max-width: 767px) {
+  .app-shell {
+    padding: 7px;
+  }
+
+  .app-outer-container {
+    min-height: calc(100vh - 14px);
+  }
+
+  .app-main {
+    min-height: calc(100vh - 14px);
+    padding: 14px;
+    border-radius: 20px;
+  }
+
+  .app-header {
+    gap: 10px;
+  }
+
+  .app-title {
+    font-size: clamp(26px, 8vw, 34px);
+    line-height: 1.08;
+  }
+
+  .app-subtitle {
+    margin-top: 7px;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .wizard-progress-card,
+  .wizard-form-card {
+    padding: 15px;
+    border-radius: 18px;
+  }
+
+  .progress-header {
+    gap: 10px;
+  }
+
+  .progress-step {
+    font-size: 18px;
+  }
+
+  .progress-complete-badge {
+    min-height: 36px;
+    padding: 0 13px;
+    font-size: 12px;
+  }
+
+  .step-indicator-row {
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+
+  .step-indicator-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .step-item {
+    min-width: 70px;
+  }
+
+  .step-circle {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+  }
+
+  .step-title {
+    max-width: 70px;
+    font-size: 10px;
+  }
+
+  .step-connector {
+    min-width: 16px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .step-form-content {
+    gap: 18px;
+  }
+
+  .loan-section-title {
+    font-size: 18px;
+  }
+
+  .loan-section-description {
+    font-size: 12px;
+  }
+
+  .loan-type-grid,
+  .loan-form-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .loan-type-card {
+    min-height: 112px;
+    height: auto;
+  }
+
+  .loan-input {
+    min-height: 48px;
+    height: 48px;
+    font-size: 14px;
+  }
+
+  .loan-field-label {
+    font-size: 13px;
+  }
+
+  .wizard-navigation {
+    padding-top: 10px;
+  }
+
+  .wizard-navigation > div {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 479px) {
+  .app-main {
+    padding: 12px;
+  }
+
+  .app-title {
+    font-size: 25px;
+  }
+
+  .app-subtitle {
+    font-size: 12px;
+  }
+
+  .wizard-progress-card,
+  .wizard-form-card {
+    padding: 13px;
+  }
+
+  .progress-complete-badge {
+    padding: 0 10px;
+  }
+
+  .loan-type-card {
+    padding: 13px;
+  }
+
+  .loan-type-card-top {
+    width: 46px;
+  }
+
+  .loan-type-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .loan-type-title {
+    font-size: 15px;
+  }
+
+  .loan-type-description {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 359px) {
+  .app-shell {
+    padding: 4px;
+  }
+
+  .app-main {
+    padding: 10px;
+    border-radius: 16px;
+  }
+
+  .app-title {
+    font-size: 23px;
+  }
+
+  .wizard-progress-card,
+  .wizard-form-card {
+    padding: 11px;
+    border-radius: 15px;
+  }
+
+  .loan-input {
+    font-size: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

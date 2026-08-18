@@ -1,0 +1,19 @@
+const banks = [
+  "State Bank of India",
+  "HDFC Bank",
+  "ICICI Bank",
+  "Axis Bank",
+  "Punjab National Bank",
+  "Bank of Baroda",
+  "Canara Bank",
+  "Union Bank of India",
+  "Kotak Mahindra Bank",
+  "IndusInd Bank",
+  "IDFC FIRST Bank",
+  "Yes Bank",
+  "Federal Bank",
+  "AU Small Finance Bank",
+  "Other",
+];
+
+export default banks;
